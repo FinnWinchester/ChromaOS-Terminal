@@ -2,6 +2,8 @@
 
 ChromaOS Terminal made for AngularJS by Finn Winchester.
 
+[Online demo](https://finnwinchester.github.io/ChromaOS-Terminal/).
+
 ### Installation
 Via Bower
 ```
