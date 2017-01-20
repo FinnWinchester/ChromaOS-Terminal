@@ -1,0 +1,39 @@
+@chromaos-terminal-height: 35px;
+@chromaos-terminal-border-radius: 8px;
+
+.chromaos-terminal-wrapper {
+	width: 100%;
+	height: 100%;
+	background-color: fade(@flat-ui-black-hole, 90%);
+}
+
+.chromaos-terminal {
+	overflow-y: auto;
+	height: 100%;
+
+	&-line {
+		clear: both;
+	}
+
+	&-character {
+		float: left;
+		width: 10px;
+		height: 25px;
+		color: @flat-ui-silver;
+		text-align: center;
+		font-family: 'Inconsolata';
+	}
+
+	&-cursor {
+		float: left;
+		width: 10px;
+		height: 25px;
+		background-color: white;
+		animation: blinker 1s linear infinite;
+		@keyframes blinker {
+			50% {
+				opacity: 0;
+			}
+		}
+	}
+}
