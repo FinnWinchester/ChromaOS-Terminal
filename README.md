@@ -14,8 +14,8 @@ bower install chromaos-terminal --save
 
 Include files in your ```index.html```:
 ```
-<script src="bower_components/chromaos/dist/js/ChromaOSTerminal.min.js"></script>
-<link href="bower_components/chromaos/dist/css/ChromaOSTerminal.min.css" rel="stylesheet" />
+<script src="bower_components/chromaos-terminal/dist/js/ChromaOSTerminal.min.js"></script>
+<link href="bower_components/chromaos-terminal/dist/css/ChromaOSTerminal.min.css" rel="stylesheet" />
 ```
 
 Add ```ChromaOSTerminal``` to your AngularJS project:
