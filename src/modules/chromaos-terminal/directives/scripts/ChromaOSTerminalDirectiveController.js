@@ -5,12 +5,16 @@
     var $commands;
     var $element;
     var $enabled;
+
     var defaultUsername = 'chromaos';
     var username = defaultUsername;
-    var glue = '@';
-    var defaultEnv = 'terminal';
-    var env = defaultEnv;
-    var input = '>';
+    var defaultGlue = '@';
+    var glue = defaultGlue;
+    var defaultEnvironment = 'terminal';
+    var environment = defaultEnvironment;
+    var defaultInput = '>';
+    var input = defaultInput;
+
     var chromaOSTerminalLineClass = 'chromaos-terminal-line';
     var chromaOSTerminalLineNumberClass = 'chromaos-terminal-line-__id__';
     var chromaOSTerminalCursorClass = 'chromaos-terminal-cursor';
@@ -27,7 +31,7 @@
 
     // Returns line prompt like 'user@root>'
     $scope.getPrompt = function() {
-      return username + glue + env + input;
+      return username + glue + environment + input;
     };
 
     // Returns a character wrapper
@@ -326,24 +330,51 @@
       });
     };
 
-    $scope.modifyUsername = function(newUsername) {
-      username = newUsername;
+    // Changes the username
+    $scope.changeUsername = function(newUsername) {
+      this.username = newUsername;
     };
-    $scope.modifyEnv = function(newEnv) {
-      env = newEnv;
+
+    // Changes the glue
+    $scope.changeGlue = function(newGlue) {
+      this.glue = newGlue;
     };
+
+    // Changes the environment
+    $scope.changeEnvironment = function(newEnvironment) {
+      this.environment = newEnvironment;
+    };
+
+    // Changes the input
+    $scope.changeInput = function(newInput) {
+      this.input = newInput;
+    };
+
+    // Changes the username
     $scope.resetUsername = function() {
-      username = defaultUsername;
+      this.username = defaultUsername;
     };
-    $scope.resetEnv = function() {
-      env = defaultEnv;
+
+    // Changes the glue
+    $scope.resetGlue = function() {
+      this.glue = defaultGlue;
+    };
+
+    // Changes the environment
+    $scope.resetEnvironment = function() {
+      this.environment = defaultEnvironment;
+    };
+
+    // Changes the input
+    $scope.resetInput = function() {
+      this.input = defaultInput;
     };
 
   }
 
   angular.module('ChromaOSTerminal.Modules.Terminal')
 
-  .controller('ChromaOSTerminalDirectiveController', ChromaOSTerminalDirectiveController);
+    .controller('ChromaOSTerminalDirectiveController', ChromaOSTerminalDirectiveController);
 
   ChromaOSTerminalDirectiveController.$inject = ['$scope', '$rootScope', '$q', '$timeout', 'ChromaOSTerminalCommandsService', 'ChromaOSTerminalCommand', 'ChromaOSTerminalParameter'];
 })(window.angular);

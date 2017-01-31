@@ -35,23 +35,9 @@ angular.module('myapp', ['ChromaOSTerminal'])
     return defer.promise;
   });
   command.addParameter(new ChromaOSTerminalParameter(['f', 'force'], 'Force'));
-  command.addParameter(new ChromaOSTerminalParameter(['c', 'cheese <origin> <remote>'], 'Cheese'));
-  command.addParameter(new ChromaOSTerminalParameter(['b', 'bread <origin>', 'aa-bb-cc'], 'Cheese'));
-  command.addParameter(new ChromaOSTerminalParameter(['s', 'sauce <sauce-type>', 'bbq-sauce'], 'Cheese'));
-  $scope.commands.push(command);
-
-  command = new ChromaOSTerminalCommand('Git', 'Git command', 'git', function(command, output) {
-    var defer = $q.defer();
-    if (command.push && command.origin && command.remote) {
-      output.push(`Git push <origin: ${command.origin}> <remote: ${command.remote}>`);
-    }
-    defer.resolve(output);
-    return defer.promise;
-  });
-  command.addParameter(new ChromaOSTerminalParameter(['push <origin> <remote>'], 'Push from <origin> to <remote>.'));
-  $scope.commands.push(command);
-
-  command.addParameter(new ChromaOSTerminalParameter(['request <origin>'], 'Makes a request from <origin>.'));
+  command.addParameter(new ChromaOSTerminalParameter(['c', 'cheese'], 'Cheese'));
+  command.addParameter(new ChromaOSTerminalParameter(['b', 'bread <origin>', 'default-bread'], 'Bread'));
+  command.addParameter(new ChromaOSTerminalParameter(['s', 'sauce <sauce-type>', 'bbq-sauce'], 'Sauce'));
   $scope.commands.push(command);
 
 }]);
