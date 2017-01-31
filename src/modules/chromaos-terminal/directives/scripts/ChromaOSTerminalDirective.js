@@ -1,52 +1,78 @@
 (function(angular) {
   'use strict';
 
-  function ChromaOSTerminalDirective(ChromaOSTerminalCommand, ChromaOSTerminalParameter, $timeout) {
+  function ChromaOSTerminalDirective($rootScope, ChromaOSTerminalCommand, ChromaOSTerminalParameter, $timeout) {
 
     function $init($scope, $element, $controller) {
       $element.addClass('chromaos-terminal-wrapper');
-      var tId = (Math.floor(Math.random() * 90000) + 10000);
-      $element.addClass('chromaos-terminal-' + tId);
-      $element.find('.chromaos-terminal').attr('data-terminal-id', tId);
+      if (!$scope.tId) {
+        $scope.tId = (Math.floor(Math.random() * 90000) + 10000);
+      }
+
+      $element.addClass('chromaos-terminal-' + $scope.tId);
+      $element.find('.chromaos-terminal').attr('data-terminal-id', $scope.tId);
       $controller.$init($element.find('.chromaos-terminal'), $scope.commands);
 
-      $scope.$on('chromaos-terminal.username.set', function(e, args) {
-        $controller.$changeUsername(args.username);
+      $rootScope.$on('chromaos-terminal.username.set', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$changeUsername(args.username);
+        }
       });
 
-      $scope.$on('chromaos-terminal.glue.set', function(e, args) {
-        $controller.$changeGlue(args.glue);
+      $rootScope.$on('chromaos-terminal.glue.set', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$changeGlue(args.glue);
+        }
       });
 
-      $scope.$on('chromaos-terminal.environment.set', function(e, args) {
-        $controller.$changeEnvironment(args.environment);
+      $rootScope.$on('chromaos-terminal.environment.set', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$changeEnvironment(args.environment);
+        }
       });
 
-      $scope.$on('chromaos-terminal.input.set', function(e, args) {
-        $controller.$changeInput(args.input);
+      $rootScope.$on('chromaos-terminal.input.set', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$changeInput(args.input);
+        }
       });
 
-      $scope.$on('chromaos-terminal.username.reset', function(e, args) {
-        $controller.$resetUsername();
+      $rootScope.$on('chromaos-terminal.username.reset', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$resetUsername();
+        }
       });
 
-      $scope.$on('chromaos-terminal.glue.reset', function(e, args) {
-        $controller.$resetGlue();
+      $rootScope.$on('chromaos-terminal.glue.reset', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$resetGlue();
+        }
       });
 
-      $scope.$on('chromaos-terminal.environment.reset', function(e, args) {
-        $controller.$resetEnvironment();
+      $rootScope.$on('chromaos-terminal.environment.reset', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$resetEnvironment();
+        }
       });
 
-      $scope.$on('chromaos-terminal.input.reset', function(e, args) {
-        $controller.$resetInput();
+      $rootScope.$on('chromaos-terminal.input.reset', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$resetInput();
+        }
+      });
+
+      $rootScope.$on('chromaos-terminal.all.reset', function(e, args) {
+        if (args.tId === $scope.tId) {
+          $controller.$resetAll();
+        }
       });
     }
 
     var directive = {
       restrict: 'EA',
       scope: {
-        commands: '='
+        commands: '=',
+        tId: '='
       },
       templateUrl: 'modules/chromaos-terminal/directives/views/ChromaOSTerminalDirectiveTemplate.html',
       compile: function(element, attributes) {
@@ -66,5 +92,5 @@
 
     .directive('chromaosTerminal', ChromaOSTerminalDirective);
 
-  ChromaOSTerminalDirective.$inject = ['ChromaOSTerminalCommand', 'ChromaOSTerminalParameter', '$timeout'];
+  ChromaOSTerminalDirective.$inject = ['$rootScope', 'ChromaOSTerminalCommand', 'ChromaOSTerminalParameter', '$timeout'];
 })(window.angular);

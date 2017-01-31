@@ -350,24 +350,32 @@
       input = newInput;
     };
 
-    // Changes the username
+    // Resets the username
     this.$resetUsername = function() {
       username = defaultUsername;
     };
 
-    // Changes the glue
+    // Resets the glue
     this.$resetGlue = function() {
       glue = defaultGlue;
     };
 
-    // Changes the environment
+    // Resets the environment
     this.$resetEnvironment = function() {
       environment = defaultEnvironment;
     };
 
-    // Changes the input
+    // Resets the input
     this.$resetInput = function() {
       input = defaultInput;
+    };
+
+    // Resets all
+    this.$resetAll = function() {
+      this.$resetUsername();
+      this.$resetGlue();
+      this.$resetEnvironment();
+      this.$resetInput();
     };
 
   }
