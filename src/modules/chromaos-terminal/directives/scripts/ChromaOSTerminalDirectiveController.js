@@ -331,43 +331,43 @@
     };
 
     // Changes the username
-    $scope.changeUsername = function(newUsername) {
-      this.username = newUsername;
+    this.$changeUsername = function(newUsername) {
+      username = newUsername;
     };
 
     // Changes the glue
-    $scope.changeGlue = function(newGlue) {
-      this.glue = newGlue;
+    this.$changeGlue = function(newGlue) {
+      glue = newGlue;
     };
 
     // Changes the environment
-    $scope.changeEnvironment = function(newEnvironment) {
-      this.environment = newEnvironment;
+    this.$changeEnvironment = function(newEnvironment) {
+      environment = newEnvironment;
     };
 
     // Changes the input
-    $scope.changeInput = function(newInput) {
-      this.input = newInput;
+    this.$changeInput = function(newInput) {
+      input = newInput;
     };
 
     // Changes the username
-    $scope.resetUsername = function() {
-      this.username = defaultUsername;
+    this.$resetUsername = function() {
+      username = defaultUsername;
     };
 
     // Changes the glue
-    $scope.resetGlue = function() {
-      this.glue = defaultGlue;
+    this.$resetGlue = function() {
+      glue = defaultGlue;
     };
 
     // Changes the environment
-    $scope.resetEnvironment = function() {
-      this.environment = defaultEnvironment;
+    this.$resetEnvironment = function() {
+      environment = defaultEnvironment;
     };
 
     // Changes the input
-    $scope.resetInput = function() {
-      this.input = defaultInput;
+    this.$resetInput = function() {
+      input = defaultInput;
     };
 
   }
